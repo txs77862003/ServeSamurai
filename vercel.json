@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd 40_UI_Taro && npm run build",
-  "outputDirectory": "40_UI_Taro/.next",
-  "installCommand": "cd 40_UI_Taro && npm install",
-  "framework": "nextjs"
-}
