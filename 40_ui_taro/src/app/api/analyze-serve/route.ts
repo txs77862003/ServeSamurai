@@ -261,14 +261,14 @@ export async function POST(request: NextRequest) {
                 }
 
                 if (err2) console.warn('infer stderr (bytes):', Buffer.byteLength(err2, 'utf8'));
-                resolve(NextResponse.json({ ...parsed, similarity, referenceSuggestions, userCsv: userCsvRelative, userClip: userClipInfo }));
+                resolve(NextResponse.json({ ...parsed, similarity, referenceSuggestions, userCsv: userCsvRelative || null, userClip: userClipInfo }));
                 return;
               }
-              resolve(NextResponse.json({ ...parsed, similarity: null, referenceSuggestions: null, userCsv: userCsvRelative, userClip: userClipInfo }));
+              resolve(NextResponse.json({ ...parsed, similarity: null, referenceSuggestions: null, userCsv: userCsvRelative || null, userClip: userClipInfo }));
               return;
             } catch (e) {
               console.warn('similarity inference skipped:', e);
-              resolve(NextResponse.json({ ...parsed, referenceSuggestions: null, userCsv: userCsvRelative, userClip: userClipInfo }));
+              resolve(NextResponse.json({ ...parsed, referenceSuggestions: null, userCsv: userCsvRelative || null, userClip: userClipInfo }));
               return;
             }
           } else {
