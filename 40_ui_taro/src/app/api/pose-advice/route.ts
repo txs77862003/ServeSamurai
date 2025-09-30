@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     // Pythonスクリプトのパス
     const scriptPath = path.join(process.cwd(), 'src', 'pages', 'pose_advice_api.py');
     
-    return new Promise((resolve) => {
+    return new Promise<Response>((resolve) => {
       const python = spawn('python3', [scriptPath], {
         cwd: process.cwd(),
         stdio: ['pipe', 'pipe', 'pipe']
