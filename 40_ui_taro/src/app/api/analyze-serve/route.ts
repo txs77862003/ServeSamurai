@@ -162,7 +162,7 @@ export async function POST(request: NextRequest) {
                 console.warn('API: clipName 未確定のためユーザーCSVを参照できません');
                 return resolve(NextResponse.json({ success: false, error: 'clipNameを特定できませんでした' }, { status: 400 }));
               }
-              const userCsvNew = path.join(poseTracksBaseNew, 'User', clipName, 'keypoints_with_tracks.csv');
+                return;              const userCsvNew = path.join(poseTracksBaseNew, 'User', clipName, 'keypoints_with_tracks.csv');
               const userCsvLegacy = path.join(poseTracksBaseLegacy, 'User', clipName, 'keypoints_with_tracks.csv');
               let csvCandidate: string | null = null;
                 path.join(projectRoot, 'frames', 'Cleaned_data', 'players', 'User', clipName),
