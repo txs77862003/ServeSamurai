@@ -166,7 +166,7 @@ export async function POST(request: NextRequest): Promise<Response> {
                 const userFrameDirCandidates = [
                   path.join(projectRoot, 'frames', 'Cleaned_data', 'players', 'User', clipName),
                   path.join(projectRoot, 'frames', 'Cleaned_Data', 'players', 'User', clipName),
-                  path.join(projectRoot, 'frames', 'players', 'User', clipName),
+                  path.join(projectRoot, 'frames', 'players', 'User', clipName)
                 ];
                 let userFrameDir: string | null = null;
                 for (const candidate of userFrameDirCandidates) {
