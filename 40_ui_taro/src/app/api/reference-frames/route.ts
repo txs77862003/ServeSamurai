@@ -25,7 +25,7 @@ async function copyFrame(source: string, destination: string) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   try {
     const body = await request.json();
     const frameDirRelative = (body?.frameDirRelative as string | undefined)?.trim();

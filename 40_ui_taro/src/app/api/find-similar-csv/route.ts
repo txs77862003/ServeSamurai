@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { spawn } from 'child_process';
 import path from 'path';
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   try {
     const { userCsv, playerName } = await request.json();
 
@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     // Pythonスクリプトのパス
     const scriptPath = path.join(process.cwd(), 'src', 'pages', 'csv_similarity_calculator.py');
     
-    return new Promise((resolve) => {
+    return new Promise<Response>((resolve) => {
       const python = spawn('python3', [scriptPath], {
         cwd: process.cwd(),
         stdio: ['pipe', 'pipe', 'pipe']
