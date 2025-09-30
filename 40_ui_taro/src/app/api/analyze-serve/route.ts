@@ -120,6 +120,7 @@ export async function POST(request: NextRequest): Promise<Response> {
           if (parsed && parsed.success) {
             // 追加: 単体YOLO + 最活性抽出（必要時）→ 類似度推論
             let userCsvRelative: string | null = null;
+            let userClipInfo: any = null;
             try {
               // 1) videoPathがpublic配下の相対パスなら絶対化
               if (videoPath && videoPath.startsWith('/')) {
@@ -175,7 +176,7 @@ export async function POST(request: NextRequest): Promise<Response> {
                     break;
                   }
                 }
-                const userClipInfo = {
+                userClipInfo = {
                   clipName,
                   frameDirRelative: userFrameDir
                     ? path.relative(projectRoot, userFrameDir).split(path.sep).join('/')

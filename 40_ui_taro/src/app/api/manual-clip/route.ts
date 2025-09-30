@@ -7,7 +7,7 @@ import { promisify } from 'util';
 const writeFile = promisify(fs.writeFile);
 const mkdir = promisify(fs.mkdir);
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   try {
     console.log('API: クリッピングリクエスト開始');
     
@@ -102,7 +102,7 @@ async function clipVideoSegments(
 
     try {
       // ffmpegを使用して動画を切り取り
-      await new Promise((resolve, reject) => {
+      await new Promise<void>((resolve, reject) => {
         const duration = (segment.end - segment.start).toString();
         // QuickTime 冒頭の黒画面対策: 正確シーク + 再エンコード + faststart + 30fps
         const ffmpegArgs = [
@@ -134,7 +134,7 @@ async function clipVideoSegments(
 
         let stderr = '';
         
-        ffmpeg.stderr.on('data', (data) => {
+        ffmpeg.stderr.on('data', (data: Buffer) => {
           stderr += data.toString();
         });
 
