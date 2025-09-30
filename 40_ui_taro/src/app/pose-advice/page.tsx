@@ -439,8 +439,8 @@ export default function PoseAdvicePage() {
         {(userCsv && referenceCsv) && (
           <div className="mt-8">
             <SynchronizedVideoComparison
-              userVideoPath={userVideoPath}
-              referenceVideoPath={referenceVideoPath}
+              userVideoPath={userVideoPath ?? ''}
+              referenceVideoPath={referenceVideoPath ?? ''}
               mostSimilarPlayer={mostSimilarPlayer || 'プロ選手'}
             />
           </div>
