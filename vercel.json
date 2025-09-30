@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd 40_UI_Taro && npm run build",
+  "outputDirectory": "40_UI_Taro/.next",
+  "installCommand": "cd 40_UI_Taro && npm install",
+  "framework": "nextjs",
+  "functions": {
+    "40_UI_Taro/src/app/api/**/*.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./40_UI_Taro/"
+}

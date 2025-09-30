@@ -1,0 +1,64 @@
+# 大量のデータファイルを除外
+pose_tracks/
+tennis_videos/
+frames/
+Cleaned_photo/
+_deprecated/
+tmp_alternative_clipper/
+
+# 大きなファイルを除外
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+*.flv
+
+# モデルファイルを除外
+*.pt
+*.pth
+*.h5
+*.pkl
+*.joblib
+
+# ログファイルを除外
+*.log
+pipeline.log
+
+# 一時ファイルを除外
+.next/
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# システムファイルを除外
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# 開発用ファイルを除外
+*.dev
+*.test
+test_*
+*_test.py
+*_test.ts
+*_test.tsx
+
+# 大きなデータセットを除外
+1_DataProcess/
+22_Joint_Detection_YOLO/
+30_Classification_LSTM/
+pose_analysis/
+
+# UI関連の不要なファイルを除外
+UI_ideal/
