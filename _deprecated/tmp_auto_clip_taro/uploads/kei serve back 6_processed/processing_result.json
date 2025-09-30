@@ -1,0 +1,54 @@
+{
+  "original_video": "/Users/sugitataro/Tennis/Tennis Serve Analysis/tmp_auto_clip_taro/uploads/kei serve back 6.mp4",
+  "processed_at": "2025-09-23T21:45:34.523717",
+  "serve_segments": [
+    {
+      "start_frame": 110,
+      "end_frame": 158,
+      "confidence": 0.8885893821716309,
+      "predicted_class": 1
+    },
+    {
+      "start_frame": 120,
+      "end_frame": 168,
+      "confidence": 0.9069226384162903,
+      "predicted_class": 1
+    },
+    {
+      "start_frame": 130,
+      "end_frame": 178,
+      "confidence": 0.9091399312019348,
+      "predicted_class": 1
+    }
+  ],
+  "clipped_videos": [
+    {
+      "path": "/Users/sugitataro/Tennis/Tennis Serve Analysis/tmp_auto_clip_taro/uploads/kei serve back 6_processed/clipped_serves/kei serve back 6_serve_1_conf0.89.mp4",
+      "start_frame": 110,
+      "end_frame": 158,
+      "start_time": 3.6703333333333332,
+      "end_time": 5.271933333333333,
+      "confidence": 0.8885893821716309,
+      "duration": 1.6016000000000001
+    },
+    {
+      "path": "/Users/sugitataro/Tennis/Tennis Serve Analysis/tmp_auto_clip_taro/uploads/kei serve back 6_processed/clipped_serves/kei serve back 6_serve_2_conf0.91.mp4",
+      "start_frame": 120,
+      "end_frame": 168,
+      "start_time": 4.0040000000000004,
+      "end_time": 5.6056,
+      "confidence": 0.9069226384162903,
+      "duration": 1.6016000000000001
+    },
+    {
+      "path": "/Users/sugitataro/Tennis/Tennis Serve Analysis/tmp_auto_clip_taro/uploads/kei serve back 6_processed/clipped_serves/kei serve back 6_serve_3_conf0.91.mp4",
+      "start_frame": 130,
+      "end_frame": 178,
+      "start_time": 4.337666666666666,
+      "end_time": 5.939266666666667,
+      "confidence": 0.9091399312019348,
+      "duration": 1.6016000000000001
+    }
+  ],
+  "total_serves": 3
+}

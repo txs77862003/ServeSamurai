@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<title>ServePro - AI Tennis Serve Analysis</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .background-image-container {
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuArLNaqZihgZHAz1UIlCKEClb4ebBpE1CPIhsOoIYfTa9GnV4Fhw0PffVjBCaT1qFNDVH0eCkVqjFEYAuOlgvJJd3KMhgRlVOVcTfa-L4qliPKhxqmyyurlFVKVkQEZaDw3Y6j3e_aWCKLmqH_-gklnsyk7qooAbOyCsveyPN1Vfm0qrgm8790MAFOb_nGKovZr0oOHgQP9PrVj6HTocUUOEEEgqRRpRvExsUoxvF1ikLfxDin8mRwMIA69t2Bgw1wYUaSdktriUfg');
+    }
+    .background-overlay {
+      background: linear-gradient(to top,
+        var(--tw-color-background-dark) 0%,
+        rgba(16, 25, 34, 0.7) 30%,
+        rgba(16, 25, 34, 0) 100%);
+    }
+    .dark .background-overlay {
+      background: linear-gradient(to top,
+        var(--tw-color-background-dark) 0%,
+        rgba(16, 25, 34, 0.7) 30%,
+        rgba(16, 25, 34, 0) 100%);
+    }
+    .light .background-overlay {
+      background: linear-gradient(to top,
+        var(--tw-color-background-light) 0%,
+        rgba(246, 247, 248, 0.7) 30%,
+        rgba(246, 247, 248, 0) 100%);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
+<div class="background-image-container absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20"></div>
+<div class="absolute inset-0 background-overlay"></div>
+<main class="relative z-10 flex w-full max-w-lg flex-col items-center justify-center p-8 text-center">
+<div class="mb-8">
+<h1 class="text-5xl font-bold text-slate-900 dark:text-white">
+          Elevate Your<span class="text-primary"> Serve</span>
+</h1>
+<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+          Analyze your serve with AI, get personalized tips, and track your progress to unlock your full potential.
+        </p>
+</div>
+<div class="w-full max-w-sm">
+<ul class="mb-8 space-y-3 text-left">
+<li class="flex items-center">
+<svg class="mr-3 h-6 w-6 flex-shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 10l4.55a2.5 2.5 0 010 4.55L15 19l-2-2.5-4.5 2.5-2.5-1.5L9.5 15 7 13l-4.5 1-1.5-2.5 2.5-4.5L6 9l2.5-2L13 9.5l2-4.5 2.5 1.5-1 4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-slate-700 dark:text-slate-300">AI-powered video analysis</span>
+</li>
+<li class="flex items-center">
+<svg class="mr-3 h-6 w-6 flex-shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.373 3.373 0 0012 18.5a3.373 3.373 0 00-1.662-.453l-.548-.547z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-slate-700 dark:text-slate-300">Personalized, actionable feedback</span>
+</li>
+<li class="flex items-center">
+<svg class="mr-3 h-6 w-6 flex-shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-slate-700 dark:text-slate-300">Track your improvement over time</span>
+</li>
+</ul>
+</div>
+<div class="flex w-full max-w-xs flex-col space-y-3">
+<a class="flex w-full items-center justify-center rounded-lg bg-primary px-5 py-3 text-base font-bold text-white shadow-lg transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark" href="#">
+          Get Started
+        </a>
+<a class="flex w-full items-center justify-center rounded-lg bg-primary/20 px-5 py-3 text-base font-bold text-primary transition hover:bg-primary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:bg-primary/30 dark:focus:ring-offset-background-dark" href="#">
+          Log In
+        </a>
+</div>
+</main>
+</div>
+
+</body></html>

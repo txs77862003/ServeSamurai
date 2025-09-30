@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serve Analyzer</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px"
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200/80 dark:border-slate-800/80 px-10 py-3">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl"> sports_tennis </span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">Serve Analyzer</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Analysis</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Drills</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-slate-200/50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined"> notifications </span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwfX-GBWft95EB9pg99Jmq7VeENeIMJU2LzYiJi-n7niHmKQ4CT-2AfUhqMwVmFNSBXdM072TX5suBLypmX6ngQLB4VW3Ktpxtn3w5gKhZcB5FyiNZqCwIMGZfK7m2U92881MUZT_L_wo6KkkPGtvNsUaH0km_g5bWmkZGPclIBFFfRR612wCXa-mgl1M-DLfhusrQIpfvQ0YDXK34pJxv6GKFrItBz1XXVndWFqL4MdnU8HKI28_3W6NELt3OsjVEjp47uD9wPoI");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 py-8 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-4xl">
+<div class="text-center mb-8">
+<h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Upload Your Serve Video</h1>
+<p class="mt-2 text-base text-slate-500 dark:text-slate-400">Drag and drop your video below or click to upload. We support MP4, MOV, and AVI formats.</p>
+</div>
+<div class="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/50 dark:bg-slate-900/50 p-8 sm:p-12 text-center">
+<div class="flex flex-col items-center gap-4">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-4xl"> upload_file </span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<p class="text-lg font-bold text-slate-900 dark:text-white">Drag and drop your video here</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Or click to browse your files</p>
+</div>
+<button class="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark transition-all">
+<span class="material-symbols-outlined mr-2"> file_upload </span>
+<span>Upload Video</span>
+</button>
+</div>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-medium text-slate-700 dark:text-slate-300">Uploading serve_practice_1.mp4...</p>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">60%</p>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+<div class="mt-12">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white px-4 pb-4">Recently Uploaded</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+<div class="group flex flex-col gap-3">
+<div class="relative w-full aspect-video overflow-hidden rounded-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlUTmqDU3CI4x-sNeTjyC8Txt2vw0w9tr3Ht1Xcf9hpa0_G2GE2NRHMcGLJfx-Fbr5df4pSZ8VIPfGeA3an8VH2bGQbajqVGWqcBG_gBKDjNcaFnPrmxqpTJxrskIMMvEIo-ND2cjnOM3Nkbv46cZeBRA1jvZrzEzfOTq1Qssop_7EEX138s9oViXEdakbFOpiBxskZfCOd-pMTAi4TgM4aFyerySXDKzPDMStEniSf0KQkGD27JVi9A5YkMno1CLPJ5Sp6_EHwn4");'></div>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-100">Serve Analysis - 2024-07-26</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Uploaded on July 26, 2024</p>
+</div>
+</div>
+<div class="group flex flex-col gap-3">
+<div class="relative w-full aspect-video overflow-hidden rounded-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSdQ3JbdiNNI4g496-zdLuf6fD7PRhNXIdUwWC0cVYNDOE6BB4YN4gItV0GNeXUN8-JZIzWCZv4lA4UlW6yq77TdXpbjxaAxOM8-s-xOZlqw56nbCkoHj5IvhmhVkBEikXXzK3M__mc4ZBLfY7LTAAsKGhQOa9FN-OnwF_kpKwvefpogeETXuM6Ci5cirNfGiUT9CG3zhZDjiLAU5Az3k8JvPwVVn9Y4RnqDabgfZ-FBc5OV6qvT2vSIX99_6FTJxKspdndlBX4DA");'></div>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-100">Serve Analysis - 2024-07-20</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Uploaded on July 20, 2024</p>
+</div>
+</div>
+<div class="group flex flex-col gap-3">
+<div class="relative w-full aspect-video overflow-hidden rounded-lg">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-300 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIGKMus0XzUmH2AHIxwSjzcgXFuXrDkEF6O6wvolbzrz0y62QjOhNfmdx3GI4ZknjeYV5UG_zrU_7KbNzMthgtDM2vxZIj5P3zxfc6M4mVZbMnf1puCaYvj8yy13xdCOePeQGCpDvVcmCbElw5TF5Ri2QpDALNk7HHdnedl0xqX5GC5QthCH5DPvCnnPPDU8uxEDSr2POkXeonpcLGppgd88Obew_xgO2kSdSXOllOAelZRC6gL1TkbahIKqXSZRMXYWf_pPUYN7M");'></div>
+</div>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-100">Serve Analysis - 2024-07-15</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Uploaded on July 15, 2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

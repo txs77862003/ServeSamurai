@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serve Analyzer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="flex h-screen flex-col">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-3 shrink-0">
+<div class="flex items-center gap-4">
+<div class="text-primary">
+<svg class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.0001 2.2627L3.41406 10.8487V20.5H8.41406V14.5H15.5861V20.5H20.5861V10.8487L12.0001 2.2627ZM12.0001 4.41421L18.5861 11V18.5H13.5861V12.5H10.4141V18.5H5.41406V11L12.0001 4.41421Z"></path>
+</svg>
+</div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white">Serve Analyzer</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Practice</a>
+<a class="text-sm font-bold text-primary dark:text-primary" href="#">Analysis</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Community</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-colors">
+<span class="material-symbols-outlined text-2xl">help</span>
+</button>
+<div class="relative">
+<img alt="User avatar" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQoi5wiABI7vdKLfy4l9xd8FlaMuSGii242Mp6nnuavj-fZYaKvjCcTihhWBlVzh0RP3oe6MyEPjZ78KltPD4mJesYHhfWC1O2wJrMVn1curbvKPZms1qkYYgFmhcxpv57ZhkpebIRSbq-TFcFhMLxh0xCHsdXM5uCkegzpUg7deo4SJyOwPMzqFa5acQha9Wfn5avZiLCd9WlZx2YvqNJos6VeYo9OknTTSznX_8stADZ47K7gCUmPvyTF3u1oh9Mo69BZ7WWK-E"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-80 shrink-0 border-r border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-6 overflow-y-auto">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Analysis Details</h2>
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5" for="serve-select">Selected Serve</label>
+<select class="form-select w-full rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-200 focus:ring-primary focus:border-primary" id="serve-select">
+<option>Serve - 24th May 2024, 15:32</option>
+<option>Serve - 23rd May 2024, 11:15</option>
+<option>Serve - 21st May 2024, 09:48</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1.5" for="compare-select">Compare With</label>
+<select class="form-select w-full rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-900 dark:text-slate-200 focus:ring-primary focus:border-primary" id="compare-select">
+<option>None</option>
+<option>Pro Player - Roger Federer</option>
+<option>Pro Player - Serena Williams</option>
+<option>My Best Serve</option>
+</select>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">Key Metrics</h3>
+<div class="grid grid-cols-2 gap-4 text-center">
+<div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+<p class="text-sm text-slate-500 dark:text-slate-400">Speed</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">112<span class="text-base font-medium">mph</span></p>
+</div>
+<div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+<p class="text-sm text-slate-500 dark:text-slate-400">Net Clearance</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">1.2<span class="text-base font-medium">ft</span></p>
+</div>
+<div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+<p class="text-sm text-slate-500 dark:text-slate-400">Toss Height</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">8.5<span class="text-base font-medium">ft</span></p>
+</div>
+<div class="p-3 rounded-lg bg-green-100 dark:bg-green-900/40">
+<p class="text-sm text-green-600 dark:text-green-400">Consistency</p>
+<p class="text-2xl font-bold text-green-800 dark:text-green-300">86<span class="text-base font-medium">%</span></p>
+</div>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+<h3 class="text-base font-semibold text-slate-900 dark:text-white">AI Feedback</h3>
+<div class="p-4 rounded-lg bg-primary/10 dark:bg-primary/20 text-sm text-primary/90 dark:text-primary/90">
+<p class="font-semibold mb-1">Great serve! Your toss is consistent. Try to get more leg drive for extra power.</p>
+<a class="font-bold underline hover:text-primary" href="#">See drill suggestion...</a>
+</div>
+</div>
+<div class="pt-4 mt-auto">
+<button class="w-full bg-primary text-white font-bold py-2.5 px-4 rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                Upload New Serve
+            </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
+<div class="flex-1 p-6 flex items-center justify-center">
+<div class="w-full h-full bg-slate-200 dark:bg-slate-800 rounded-xl flex items-center justify-center relative">
+<img alt="Tennis serve video frame" class="max-w-full max-h-full object-contain rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA71Zm5IPK7LsbBwYFmzVYPD_gUwxJCHu7T5icTcGjJB3ErK4-Tbj8Y5YRktRoLwSHhtDHDzrCCcqOKPdKijnyBISEpNTHIhHpBPgDLs6SGymCERedG5C9YtYHYXDFCCa21dyAVbLc2f0p_wZ97ndeyTiObNzANSoXbsxEnTJuG3lILEh1f6aaTigU0eKrFPqY_QhJ_Can-cgBXW12duM1PW5XHcc-Uh1oW1YO_oyTMlxO5bAiBL10fbVgNIGd0_iptgoWvquDme0"/>
+<div class="absolute top-4 right-4 flex gap-2">
+<button class="h-10 w-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors"><span class="material-symbols-outlined">edit</span></button>
+<button class="h-10 w-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/60 transition-colors"><span class="material-symbols-outlined">compare_arrows</span></button>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4">
+<button class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">skip_previous</span></button>
+<button class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">fast_rewind</span></button>
+<button class="h-14 w-14 rounded-full bg-primary text-white flex items-center justify-center text-4xl hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<button class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">fast_forward</span></button>
+<button class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">skip_next</span></button>
+<div class="flex-1 flex items-center gap-3 ml-4">
+<span class="text-sm font-medium text-slate-500">0:03</span>
+<div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+<span class="text-sm font-medium text-slate-500">0:07</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

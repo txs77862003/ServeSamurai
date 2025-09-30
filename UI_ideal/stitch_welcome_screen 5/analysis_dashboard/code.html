@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serve Analyzer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-background-light dark:bg-background-dark border-r border-gray-200 dark:border-gray-800 flex flex-col p-4">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl"> sports_tennis </span>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">Serve Analyzer</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> dashboard </span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> videocam </span>
+<span>Record</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> search </span>
+<span>Analyze</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary font-semibold" href="#">
+<span class="material-symbols-outlined"> leaderboard </span>
+<span>Compare</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> settings </span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto bg-primary/5 dark:bg-primary/10 p-4 rounded-lg text-center">
+<p class="text-sm text-gray-700 dark:text-gray-300">Upgrade to Pro for more features.</p>
+<button class="mt-2 w-full bg-primary text-white font-semibold py-2 rounded-lg hover:bg-primary/90 transition-colors"> Upgrade </button>
+</div>
+</aside>
+<main class="flex-1 p-8">
+<header class="mb-8">
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Pro Serve Comparison</h2>
+<p class="text-gray-500 dark:text-gray-400">See how your serve stacks up against a professional's.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<div class="lg:col-span-3">
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Video Analysis</h3>
+<div class="flex items-center gap-4">
+<span class="text-sm text-gray-500 dark:text-gray-400">Compare with:</span>
+<div class="relative">
+<select class="appearance-none bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 py-2 pl-3 pr-8 rounded-lg text-sm focus:outline-none focus:bg-white dark:focus:bg-gray-900 focus:border-primary">
+<option>Roger Federer</option>
+<option>Serena Williams</option>
+<option>Andy Roddick</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+<span class="material-symbols-outlined text-base"> expand_more </span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">You</div>
+<img alt="User's serve video" class="rounded-lg aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVX3uig6cypXNXxr_e1KeA3qZuNAfz1eKi0u_Te5gYAfuPbrqzycgfMXTOnONPY2cbzV7zVMWz6u4a6-rQAx0veKPipVBId9dXyzbf_L5btAO90fxg9en5G1p0SkySzK-5CJakeRp-k2r6gYYPdabWZLtgGnd-Oq6z2SIaYPvge9PalBjaVL1WnZTBrOWKZTUaWABwT2oTjqcJUyXBY256ruq9ZLuKc74VUGyeIJU2G8TwxnBEtCsvNRrKPrOSoygTk-7EwXK4dYY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="font-bold text-lg">Your Serve</p>
+<p class="text-sm">Recorded: 2 days ago</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">Pro</div>
+<img alt="Professional's serve video" class="rounded-lg aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKFP7jvx_WOJrnGN3vqwEGPxhnX0q-QTMo-6wGs893BwiVd0zTukGwWBrQlDmb3FEQJJfi3_DqcaisDS3qkD8BczY8SLbfZwLPK5z--ZTO-fAO4AdqDzj8zB76jz9yuIhoGlw1mCLDApi--OuSK3LEIBIWmh445wywGI1mkSZaxEAleIGL0OxK2NvA0zP51YOHRzlBY2aeUE9V5CR_Xpej-DE5cmzjnEEvfN8YfnZvkMwMWWkvPVfVXZuNxUcidMCF12ZDvdy68eY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<p class="font-bold text-lg">Roger Federer</p>
+<p class="text-sm">Serve Type: Flat</p>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-center gap-4">
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-3xl"> replay_10 </span>
+</button>
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-4xl"> play_circle </span>
+</button>
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-3xl"> forward_10 </span>
+</button>
+<div class="flex-1 mx-4">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined text-2xl"> fullscreen </span>
+</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800 h-full flex flex-col">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Key Metrics Comparison</h3>
+<div class="space-y-4 flex-1">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3"> speed </span>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Serve Speed</p>
+<div class="flex items-baseline gap-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">105 <span class="text-sm">mph</span></span>
+<span class="text-sm text-green-500 font-semibold">vs 125 mph</span>
+</div>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 84%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3"> arrow_upward </span>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Ball Toss Height</p>
+<div class="flex items-baseline gap-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">10.2 <span class="text-sm">ft</span></span>
+<span class="text-sm text-red-500 font-semibold">vs 11.5 ft</span>
+</div>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary mr-3"> sports_tennis </span>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<p class="text-sm text-gray-500 dark:text-gray-400">Racket Head Speed</p>
+<div class="flex items-baseline gap-2">
+<span class="text-lg font-bold text-gray-900 dark:text-white">88 <span class="text-sm">mph</span></span>
+<span class="text-sm text-red-500 font-semibold">vs 105 mph</span>
+</div>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 83%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800 mt-8">
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-4 mt-1"> auto_awesome </span>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">AI-Powered Feedback</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Your ball toss is slightly lower than the pro's, which might limit your serve's peak height and angle. Try tossing the ball about a foot higher to achieve a similar trajectory and power.</p>
+<a class="text-primary font-semibold text-sm mt-3 inline-flex items-center group" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-base ml-1 group-hover:translate-x-1 transition-transform"> arrow_forward </span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Serve Analyzer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-background-light dark:bg-background-dark border-r border-gray-200 dark:border-gray-800 flex flex-col p-4">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary text-3xl"> sports_tennis </span>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">Serve Analyzer</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-primary font-semibold" href="#">
+<span class="material-symbols-outlined"> dashboard </span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> videocam </span>
+<span>Record</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> search </span>
+<span>Analyze</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> leaderboard </span>
+<span>Compare</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined"> settings </span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto bg-primary/5 dark:bg-primary/10 p-4 rounded-lg text-center">
+<p class="text-sm text-gray-700 dark:text-gray-300">Upgrade to Pro for more features.</p>
+<button class="mt-2 w-full bg-primary text-white font-semibold py-2 rounded-lg hover:bg-primary/90 transition-colors"> Upgrade </button>
+</div>
+</aside>
+<main class="flex-1 p-8">
+<header class="mb-8">
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Serve Performance Overview</h2>
+<p class="text-gray-500 dark:text-gray-400">Track your progress and identify areas for improvement.</p>
+</header>
+<div class="flex items-center gap-2 mb-6">
+<button class="px-4 py-1.5 text-sm font-medium rounded-full bg-primary text-white">All Serves</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">Last 30 Days</button>
+<button class="px-4 py-1.5 text-sm font-medium rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">Matches</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<p class="text-sm text-gray-500 dark:text-gray-400">Average Serve Speed</p>
+<p class="text-4xl font-bold text-gray-900 dark:text-white mt-1">105 <span class="text-2xl">mph</span></p>
+</div>
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<p class="text-sm text-gray-500 dark:text-gray-400">First Serve Percentage</p>
+<p class="text-4xl font-bold text-gray-900 dark:text-white mt-1">62<span class="text-2xl">%</span></p>
+</div>
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<p class="text-sm text-gray-500 dark:text-gray-400">Aces per Match</p>
+<p class="text-4xl font-bold text-gray-900 dark:text-white mt-1">4</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Serve Speed Trend</h3>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-gray-500 dark:text-gray-400 text-sm">Last 30 Days</p>
+<span class="text-sm font-semibold text-green-500 flex items-center">
+<span class="material-symbols-outlined text-base"> arrow_upward </span>
+                    5%
+                  </span>
+</div>
+</div>
+<p class="text-2xl font-bold text-gray-900 dark:text-white">105 mph</p>
+</div>
+<div class="h-64">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 500 250" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path class="dark:stroke-gray-800" d="M0 250 H 500" stroke="#e5e7eb" stroke-width="1"></path>
+<path class="dark:stroke-gray-800" d="M0 187.5 H 500" stroke="#e5e7eb" stroke-dasharray="2 2" stroke-width="1"></path>
+<path class="dark:stroke-gray-800" d="M0 125 H 500" stroke="#e5e7eb" stroke-dasharray="2 2" stroke-width="1"></path>
+<path class="dark:stroke-gray-800" d="M0 62.5 H 500" stroke="#e5e7eb" stroke-dasharray="2 2" stroke-width="1"></path>
+<path class="dark:stroke-gray-800" d="M0 0 H 500" stroke="#e5e7eb" stroke-width="1"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_main" x1="250" x2="250" y1="0" y2="250">
+<stop stop-color="#137fec" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#137fec" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M 0 175 C 35.71 175 35.71 50 71.43 50 C 107.14 50 107.14 100 142.86 100 C 178.57 100 178.57 75 214.29 75 C 250 75 250 150 285.71 150 C 321.43 150 321.43 25 357.14 25 C 392.86 25 392.86 125 428.57 125 C 464.29 125 464.29 60 500 60 L 500 250 L 0 250 Z" fill="url(#paint0_linear_main)"></path>
+<path d="M 0 175 C 35.71 175 35.71 50 71.43 50 C 107.14 50 107.14 100 142.86 100 C 178.57 100 178.57 75 214.29 75 C 250 75 250 150 285.71 150 C 321.43 150 321.43 25 357.14 25 C 392.86 25 392.86 125 428.57 125 C 464.29 125 464.29 60 500 60" stroke="#137fec" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="bg-white dark:bg-gray-900/50 p-6 rounded-xl border border-gray-200 dark:border-gray-800">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Serve Accuracy</h3>
+<div class="flex items-center gap-2 mt-1 mb-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm">Last 30 Days</p>
+<span class="text-sm font-semibold text-green-500 flex items-center">
+<span class="material-symbols-outlined text-base"> arrow_upward </span>
+                    3%
+                  </span>
+</div>
+<div class="flex justify-center items-center h-64">
+<div class="relative w-40 h-40">
+<svg class="w-full h-full" viewBox="0 0 36 36">
+<path class="text-gray-200 dark:text-gray-700" d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.8"></path>
+<path class="text-primary" d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="62, 100" stroke-linecap="round" stroke-width="3.8"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<p class="text-3xl font-bold text-gray-900 dark:text-white">62<span class="text-xl">%</span></p>
+<p class="text-xs text-gray-500 dark:text-gray-400">First Serve In</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

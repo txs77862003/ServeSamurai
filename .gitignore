@@ -1,0 +1,118 @@
+# 動画ファイルディレクトリ
+tennis_videos/
+clips/
+frames/
+Cleaned_photo/
+pose_coords_yolo/
+cut_clips.sh/
+tmp_alternative_clipper/uploads/
+tmp_alternative_clipper/outputs/
+tmp_auto_clip_taro/uploads/
+tmp_auto_clip_taro/test_outputs/
+40_UI_Taro/public/clipped-videos/
+
+
+# Python関連
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+/lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 仮想環境
+.venv/
+venv/
+ENV/
+env/
+
+# IDE関連
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS関連
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.temp
+
+# JavaScript/Node - Next.js
+/node_modules
+40_UI_Taro/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+40_UI_Taro/.next/
+
+# UI入力由来の生成物（コミット対象外）
+# pose_tracks（新標準）
+pose_tracks/players/User/
+pose_tracks/players/Other/
+# pose_tracks（レガシー互換）
+pose_tracks/Cleaned_Data/players/User/
+pose_tracks/Cleaned_Data/players/Other/
+# UI側の一時ファイル
+40_UI_Taro/tmp/
+# ルート一時領域
+tmp/
+40_UI_Taro/public/clipped-videos/
+/out/
+
+# production
+/build
+
+# misc
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# プロジェクト固有
+tennis-analyzer-frontend/
+*.pth
+40_UI_Taro/.next/

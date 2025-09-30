@@ -1,0 +1,4 @@
+track_id,total_movement,num_frames,first_frame,last_frame,active
+0,8404.274837493896,96,0001(1).jpg,0048.jpg,True
+1,0.0,2,0008(1).jpg,0008.jpg,False
+2,0.0,2,0044(1).jpg,0044.jpg,True
