@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
           if (parsed && parsed.success) {
             // 追加: 単体YOLO + 最活性抽出（必要時）→ 類似度推論
             try {
-              // 1) videoPathがpublic配下の相対パスなら絶対化
+            let userCsvRelative: string | null = null;              // 1) videoPathがpublic配下の相対パスなら絶対化
               if (videoPath && videoPath.startsWith('/')) {
                 const publicDir = path.resolve(process.cwd(), 'public');
                 const absVideo = path.join(publicDir, videoPath.replace(/^\/+/, ''));
@@ -165,8 +165,6 @@ export async function POST(request: NextRequest) {
               const userCsvNew = path.join(poseTracksBaseNew, 'User', clipName, 'keypoints_with_tracks.csv');
               const userCsvLegacy = path.join(poseTracksBaseLegacy, 'User', clipName, 'keypoints_with_tracks.csv');
               let csvCandidate: string | null = null;
-              let userCsvRelative: string | null = null;
-              const userFrameDirCandidates = [
                 path.join(projectRoot, 'frames', 'Cleaned_data', 'players', 'User', clipName),
                 path.join(projectRoot, 'frames', 'Cleaned_Data', 'players', 'User', clipName),
                 path.join(projectRoot, 'frames', 'players', 'User', clipName),
