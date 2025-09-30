@@ -16,7 +16,7 @@ async function directoryExists(target: string): Promise<boolean> {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   try {
     console.log('API: 分析リクエスト開始');
     
@@ -119,8 +119,9 @@ export async function POST(request: NextRequest) {
           const parsed = JSON.parse(stdout || '{}');
           if (parsed && parsed.success) {
             // 追加: 単体YOLO + 最活性抽出（必要時）→ 類似度推論
+            let userCsvRelative: string | null = null;
             try {
-            let userCsvRelative: string | null = null;              // 1) videoPathがpublic配下の相対パスなら絶対化
+              // 1) videoPathがpublic配下の相対パスなら絶対化
               if (videoPath && videoPath.startsWith('/')) {
                 const publicDir = path.resolve(process.cwd(), 'public');
                 const absVideo = path.join(publicDir, videoPath.replace(/^\/+/, ''));
@@ -158,50 +159,49 @@ export async function POST(request: NextRequest) {
               // 3) ユーザーのCSVを最優先で使用（新標準: pose_tracks/players）。無ければ旧パス(Cleaned_Data)を試し、なければエラー
               const poseTracksBaseNew = path.join(projectRoot, 'pose_tracks', 'players');
               const poseTracksBaseLegacy = path.join(projectRoot, 'pose_tracks', 'Cleaned_Data', 'players');
-              if (!clipName) {
-                console.warn('API: clipName 未確定のためユーザーCSVを参照できません');
-                return resolve(NextResponse.json({ success: false, error: 'clipNameを特定できませんでした' }, { status: 400 }));
-              }
-                return;              const userCsvNew = path.join(poseTracksBaseNew, 'User', clipName, 'keypoints_with_tracks.csv');
-              const userCsvLegacy = path.join(poseTracksBaseLegacy, 'User', clipName, 'keypoints_with_tracks.csv');
-              let csvCandidate: string | null = null;
-                path.join(projectRoot, 'frames', 'Cleaned_data', 'players', 'User', clipName),
-                path.join(projectRoot, 'frames', 'Cleaned_Data', 'players', 'User', clipName),
-                path.join(projectRoot, 'frames', 'players', 'User', clipName),
-              ];
-              let userFrameDir: string | null = null;
-              for (const candidate of userFrameDirCandidates) {
-                if (await directoryExists(candidate)) {
-                  userFrameDir = candidate;
-                  break;
+              if (clipName) {
+                const userCsvNew = path.join(poseTracksBaseNew, 'User', clipName, 'keypoints_with_tracks.csv');
+                const userCsvLegacy = path.join(poseTracksBaseLegacy, 'User', clipName, 'keypoints_with_tracks.csv');
+                let csvCandidate: string | null = null;
+                const userFrameDirCandidates = [
+                  path.join(projectRoot, 'frames', 'Cleaned_data', 'players', 'User', clipName),
+                  path.join(projectRoot, 'frames', 'Cleaned_Data', 'players', 'User', clipName),
+                  path.join(projectRoot, 'frames', 'players', 'User', clipName),
+                ];
+                let userFrameDir: string | null = null;
+                for (const candidate of userFrameDirCandidates) {
+                  if (await directoryExists(candidate)) {
+                    userFrameDir = candidate;
+                    break;
+                  }
                 }
-              }
-              const userClipInfo = {
-                clipName,
-                frameDirRelative: userFrameDir
-                  ? path.relative(projectRoot, userFrameDir).split(path.sep).join('/')
-                  : undefined,
-                slug: makeSlug('User', clipName),
-              };
-              try {
-                await fs.access(userCsvNew);
-                csvCandidate = userCsvNew;
-                userCsvRelative = path.relative(projectRoot, userCsvNew).split(path.sep).join('/');
-                console.log('API: 類似度推論のCSV候補(新標準):', csvCandidate);
-              } catch {
+                const userClipInfo = {
+                  clipName,
+                  frameDirRelative: userFrameDir
+                    ? path.relative(projectRoot, userFrameDir).split(path.sep).join('/')
+                    : undefined,
+                  slug: makeSlug('User', clipName),
+                };
                 try {
-                  await fs.access(userCsvLegacy);
-                  csvCandidate = userCsvLegacy;
-                  userCsvRelative = path.relative(projectRoot, userCsvLegacy).split(path.sep).join('/');
-                  console.log('API: 類似度推論のCSV候補(レガシー互換):', csvCandidate);
+                  await fs.access(userCsvNew);
+                  csvCandidate = userCsvNew;
+                  userCsvRelative = path.relative(projectRoot, userCsvNew).split(path.sep).join('/');
+                  console.log('API: 類似度推論のCSV候補(新標準):', csvCandidate);
                 } catch {
-                  console.warn('API: ユーザーCSVが見つかりません:', userCsvNew, 'または', userCsvLegacy);
-                  return resolve(NextResponse.json({ success: false, error: 'ユーザーのCSVが見つかりません', expected: userCsvNew, fallbackTried: userCsvLegacy }, { status: 404 }));
+                  try {
+                    await fs.access(userCsvLegacy);
+                    csvCandidate = userCsvLegacy;
+                    userCsvRelative = path.relative(projectRoot, userCsvLegacy).split(path.sep).join('/');
+                    console.log('API: 類似度推論のCSV候補(レガシー互換):', csvCandidate);
+                  } catch {
+                    console.warn('API: ユーザーCSVが見つかりません:', userCsvNew, 'または', userCsvLegacy);
+                    resolve(NextResponse.json({ success: false, error: 'ユーザーのCSVが見つかりません', expected: userCsvNew, fallbackTried: userCsvLegacy }, { status: 404 }));
+                    return;
+                  }
                 }
-              }
-              const modelPath = path.join(projectRoot, '30_Classification_LSTM', 'best_augmented_model.pth');
-              let similarity: any = null;
-              if (csvCandidate) {
+                const modelPath = path.join(projectRoot, '30_Classification_LSTM', 'best_augmented_model.pth');
+                let similarity: any = null;
+                if (csvCandidate) {
                 const inferPath = path.join(projectRoot, '30_Classification_LSTM', 'infer_similarity.py');
                 const inferArgs = [inferPath, '--csv', csvCandidate, '--model', modelPath];
                 console.log('API: infer_similarity 実行:', pythonCmd, inferArgs.join(' '));
@@ -259,10 +259,10 @@ export async function POST(request: NextRequest) {
                 }
 
                 if (err2) console.warn('infer stderr (bytes):', Buffer.byteLength(err2, 'utf8'));
-                resolve(NextResponse.json({ ...parsed, similarity, referenceSuggestions, userCsv: userCsvRelative || null, userClip: userClipInfo }));
+                resolve(NextResponse.json({ ...parsed, similarity, referenceSuggestions, userCsv: userCsvRelative, userClip: userClipInfo }));
                 return;
               }
-              resolve(NextResponse.json({ ...parsed, similarity: null, referenceSuggestions: null, userCsv: userCsvRelative || null, userClip: userClipInfo }));
+              resolve(NextResponse.json({ ...parsed, similarity: null, referenceSuggestions: null, userCsv: userCsvRelative, userClip: userClipInfo }));
               return;
             } catch (e) {
               console.warn('similarity inference skipped:', e);
@@ -289,4 +289,3 @@ export async function POST(request: NextRequest) {
     }, { status: 500 });
   }
 }
-// Force redeploy Tue Sep 30 13:54:05 JST 2025
