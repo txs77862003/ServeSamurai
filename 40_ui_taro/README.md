@@ -13,7 +13,7 @@
 1. リポジトリをクローン
 ```bash
 git clone <repository-url>
-cd "Tennis Serve Analysis/40_UI_Taro"
+cd "Tennis Serve Analysis/40_ui_taro"
 ```
 
 2. 依存関係をインストール

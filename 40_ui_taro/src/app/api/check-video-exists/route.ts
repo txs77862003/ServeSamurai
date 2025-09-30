@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     // 許可ディレクトリのホワイトリスト
     const ALLOWED_PREFIXES = [
       'tennis_videos/Cleaned_Data/',
-      '40_UI_Taro/public/clipped-videos/',
+      '40_ui_taro/public/clipped-videos/',
     ];
 
     if (!ALLOWED_PREFIXES.some((p) => rel.startsWith(p))) {

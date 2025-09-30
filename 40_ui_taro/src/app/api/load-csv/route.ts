@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     }
 
     // プロジェクトルートを基準としたパス解決
-    // 40_UI_Taroディレクトリから親ディレクトリ（Tennis Serve Analysis）に移動
+    // 40_ui_taroディレクトリから親ディレクトリ（Tennis Serve Analysis）に移動
     const projectRoot = path.join(process.cwd(), '..');
     const fullPath = path.join(projectRoot, csvPath);
 
