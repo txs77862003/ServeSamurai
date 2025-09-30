@@ -264,6 +264,11 @@ export async function POST(request: NextRequest): Promise<Response> {
               }
               resolve(NextResponse.json({ ...parsed, similarity: null, referenceSuggestions: null, userCsv: userCsvRelative, userClip: userClipInfo }));
               return;
+              } else {
+                console.warn('API: clipName 未確定のためユーザーCSVを参照できません');
+                resolve(NextResponse.json({ success: false, error: 'clipNameを特定できませんでした' }, { status: 400 }));
+                return;
+              }
             } catch (e) {
               console.warn('similarity inference skipped:', e);
               resolve(NextResponse.json({ ...parsed, referenceSuggestions: null, userCsv: userCsvRelative || null, userClip: userClipInfo }));
