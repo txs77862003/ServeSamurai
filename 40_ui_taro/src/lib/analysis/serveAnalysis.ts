@@ -281,17 +281,4 @@ function average(arr: number[]) { if (!arr.length) return 0; return arr.reduce((
 function ensureVideoReady(video: HTMLVideoElement) { return new Promise<void>((resolve) => { if (video.readyState >= 2 && video.duration) return resolve(); const onLoaded = () => { cleanup(); resolve(); }; const cleanup = () => { video.removeEventListener("loadedmetadata", onLoaded); video.removeEventListener("canplay", onLoaded) }; video.addEventListener("loadedmetadata", onLoaded); video.addEventListener("canplay", onLoaded) }) }
 function seekVideo(video: HTMLVideoElement, time: number) { return new Promise<void>((resolve) => { const onSeeked = () => { video.removeEventListener("seeked", onSeeked); resolve() }; video.addEventListener("seeked", onSeeked); video.currentTime = Math.min(Math.max(time, 0), Math.max(0.001, video.duration - 0.001)) }) }
 
-// Explicit named exports to ensure module resolution
-export {
-  extractServeFeatures,
-  compareToPros,
-  generateAdvice,
-  analyzeServe,
-}
-
-export type {
-  ServeFeatures,
-  PlayerProfile,
-  SimilarityResult,
-  AnalysisResult,
-}
+// (Named exports are already declared above via `export function` / `export type`.)
