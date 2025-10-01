@@ -9,13 +9,9 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import ResultsDashboard from '@/components/ResultsDashboard';
 import StepIndicator from '@/components/StepIndicator';
-import {
-  analyzeServe,
-  compareToPros,
-  generateAdvice,
-  type AnalysisResult,
-  type ServeFeatures,
-} from '@/lib/analysis/serveAnalysis';
+import * as Serve from '../../lib/analysis/serveAnalysis';
+type AnalysisResult = Serve.AnalysisResult;
+type ServeFeatures = Serve.ServeFeatures;
 
 export default function ResultsPage() {
   const [clippedVideos, setClippedVideos] = useState<any[]>([]);
@@ -58,7 +54,7 @@ export default function ResultsPage() {
       setError(null);
       
       // 実際の分析処理
-      const res = await analyzeServe(videoRef.current);
+      const res = await Serve.analyzeServe(videoRef.current);
       setResult(res);
       setAnalysisComplete(true);
       
@@ -87,8 +83,8 @@ export default function ResultsPage() {
       shoulderRotationProxy: 0.68,
       racquetDropProxy: 0.78,
     };
-    const similarities = compareToPros(features);
-    const advice = generateAdvice(features, similarities[0]);
+    const similarities = Serve.compareToPros(features);
+    const advice = Serve.generateAdvice(features, similarities[0]);
     const demo: AnalysisResult = { features, similarities, advice };
     setResult(demo);
     setAnalysisComplete(true);
