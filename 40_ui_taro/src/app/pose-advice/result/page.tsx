@@ -3,10 +3,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import StepIndicator from "@/components/StepIndicator";
+import { Button } from "../../../components/ui/button";
+import { Badge } from "../../../components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../../components/ui/card";
+import StepIndicator from "../../../components/StepIndicator";
 
 type AdviceFinding = {
   metric: string;
@@ -371,7 +371,7 @@ export default function PoseAdviceResultPage() {
             <CardTitle className="text-2xl">💡 コーチングヒント</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {result.advice.length > 0 ? (
+            {Array.isArray(result?.advice) && result.advice.length > 0 ? (
               result.advice.map((item, index) => (
                 <div key={index} className="p-4 bg-white border border-blue-100 rounded-lg text-blue-900 leading-relaxed">
                   {item.recommendation}
